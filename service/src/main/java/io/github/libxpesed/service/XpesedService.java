@@ -1,4 +1,4 @@
-package io.github.libxposed.service;
+package io.github.libxpesed.service;
 
 import android.content.SharedPreferences;
 import android.os.ParcelFileDescriptor;
@@ -14,7 +14,7 @@ import java.util.WeakHashMap;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 @SuppressWarnings("unused")
-public final class XposedService {
+public final class XpesedService {
 
     public final static class ServiceException extends RuntimeException {
         ServiceException(String message) {
@@ -22,11 +22,11 @@ public final class XposedService {
         }
 
         ServiceException(RemoteException e) {
-            super("Xposed service error", e);
+            super("Xpesed service error", e);
         }
     }
 
-    private final static Map<OnScopeEventListener, IXposedScopeCallback> scopeCallbacks = new WeakHashMap<>();
+    private final static Map<OnScopeEventListener, IXpesedScopeCallback> scopeCallbacks = new WeakHashMap<>();
 
     /**
      * Callback interface for module scope request.
@@ -73,8 +73,8 @@ public final class XposedService {
         default void onScopeRequestFailed(String packageName, String message) {
         }
 
-        private IXposedScopeCallback asInterface() {
-            return scopeCallbacks.computeIfAbsent(this, (listener) -> new IXposedScopeCallback.Stub() {
+        private IXpesedScopeCallback asInterface() {
+            return scopeCallbacks.computeIfAbsent(this, (listener) -> new IXpesedScopeCallback.Stub() {
                 @Override
                 public void onScopeRequestPrompted(String packageName) {
                     listener.onScopeRequestPrompted(packageName);
@@ -130,16 +130,16 @@ public final class XposedService {
         FRAMEWORK_PRIVILEGE_EMBEDDED
     }
 
-    private final IXposedService mService;
+    private final IXpesedService mService;
     private final Map<String, RemotePreferences> mRemotePrefs = new HashMap<>();
 
     final ReentrantReadWriteLock deletionLock = new ReentrantReadWriteLock();
 
-    XposedService(IXposedService service) {
+    XpesedService(IXpesedService service) {
         mService = service;
     }
 
-    IXposedService getRaw() {
+    IXpesedService getRaw() {
         return mService;
     }
 

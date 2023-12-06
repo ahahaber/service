@@ -1,4 +1,4 @@
-package io.github.libxposed.service;
+package io.github.libxpesed.service;
 
 import android.os.IBinder;
 import android.util.Log;
@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @SuppressWarnings("unused")
-public final class XposedServiceHelper {
+public final class XpesedServiceHelper {
 
     /**
      * Callback interface for Xposed service.
@@ -21,23 +21,23 @@ public final class XposedServiceHelper {
          *
          * @param service Service instance
          */
-        void onServiceBind(@NonNull XposedService service);
+        void onServiceBind(@NonNull XpesedService service);
 
         /**
          * Callback when the service is dead.
          */
-        void onServiceDied(@NonNull XposedService service);
+        void onServiceDied(@NonNull XpesedService service);
     }
 
-    private static final String TAG = "XposedServiceHelper";
-    private static final Set<XposedService> mCache = new HashSet<>();
+    private static final String TAG = "XpesedServiceHelper";
+    private static final Set<XpesedService> mCache = new HashSet<>();
     private static OnServiceListener mListener = null;
 
     static void onBinderReceived(IBinder binder) {
         if (binder == null) return;
         synchronized (mCache) {
             try {
-                var service = new XposedService(IXposedService.Stub.asInterface(binder));
+                var service = new XpesedService(IXpesedService.Stub.asInterface(binder));
                 if (mListener == null) {
                     mCache.add(service);
                 } else {

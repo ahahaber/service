@@ -1,4 +1,4 @@
-package io.github.libxposed.service;
+package io.github.libxpesed.service;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -30,7 +30,7 @@ public final class RemotePreferences implements SharedPreferences {
     private static final Object CONTENT = new Object();
     private static final Handler HANDLER = new Handler(Looper.getMainLooper());
 
-    private final XposedService mService;
+    private final XpesedService mService;
     private final String mGroup;
     private final Lock mLock = new ReentrantLock();
     private final Map<String, Object> mMap = new ConcurrentHashMap<>();
@@ -38,13 +38,13 @@ public final class RemotePreferences implements SharedPreferences {
 
     private volatile boolean isDeleted = false;
 
-    private RemotePreferences(XposedService service, String group) {
+    private RemotePreferences(XpesedService service, String group) {
         this.mService = service;
         this.mGroup = group;
     }
 
     @Nullable
-    static RemotePreferences newInstance(XposedService service, String group) throws RemoteException {
+    static RemotePreferences newInstance(XpesedService service, String group) throws RemoteException {
         Bundle output = service.getRaw().requestRemotePreferences(group);
         if (output == null) return null;
         var prefs = new RemotePreferences(service, group);

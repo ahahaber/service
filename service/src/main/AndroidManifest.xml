@@ -3,8 +3,8 @@
 
     <application>
         <provider
-            android:name=".XposedProvider"
-            android:authorities="${applicationId}.XposedService"
+            android:name=".XpesedProvider"
+            android:authorities="${applicationId}.XpesedService"
             android:exported="true"
             tools:ignore="ExportedContentProvider" />
     </application>

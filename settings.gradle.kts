@@ -17,6 +17,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "libxposed-service"
+rootProject.name = "libxpesed-service"
 
 include(":interface", ":service")

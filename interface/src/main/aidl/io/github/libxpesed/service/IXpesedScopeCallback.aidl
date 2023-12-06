@@ -1,6 +1,6 @@
-package io.github.libxposed.service;
+package io.github.libxpesed.service;
 
-interface IXposedScopeCallback {
+interface IXpesedScopeCallback {
     oneway void onScopeRequestPrompted(String packageName) = 1;
     oneway void onScopeRequestApproved(String packageName) = 2;
     oneway void onScopeRequestDenied(String packageName) = 3;

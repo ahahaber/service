@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "io.github.libxposed.service"
+    namespace = "io.github.libxpesed.service"
     compileSdk = 34
     buildToolsVersion = "34.0.0"
 
@@ -36,7 +36,7 @@ publishing {
     publications {
         register<MavenPublication>("interface") {
             artifactId = "interface"
-            group = "io.github.libxposed"
+            group = "io.github.libxpesed"
             version = "100"
             pom {
                 name.set("interface")
